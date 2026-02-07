@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('sous_niveaux', function (Blueprint $table) {
             $table->id();
+            $table->string('code_sousNiveau')->unique();
+            $table->string('nom_sousNiveau')->unique();
+            $table->foreignId('id_niveau')->constrained('niveaux')->onDelete('cascade'); 
             $table->timestamps();
         });
     }

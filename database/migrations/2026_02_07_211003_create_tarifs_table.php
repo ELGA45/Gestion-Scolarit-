@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('tarifs', function (Blueprint $table) {
             $table->id();
+            $table->decimal('inscription', 8, 2);
+            $table->decimal('mensualite', 8, 2);
             $table->timestamps();
         });
     }

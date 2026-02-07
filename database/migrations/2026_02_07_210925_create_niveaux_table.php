@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('niveaux', function (Blueprint $table) {
             $table->id();
+            $table->string('nom_niveau')->unique();
             $table->timestamps();
         });
     }
