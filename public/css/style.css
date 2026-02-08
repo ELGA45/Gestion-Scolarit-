@@ -55,34 +55,29 @@ html, body {
     border-radius: 50%;
 }
 
-/* ===== HEADER ===== */
-.tab-bord {
-    position: fixed;
-    top: 0;
-    left: 240px;
-    right: 0;
-    height: 60px;
-    background-color: #1E40AF;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2); /* garde la séparation du contenu */
-}
-
 /* ===== TOPBAR ===== */
 .topbar {
     height: 60px;
     background-color: #1E40AF;
-    color: white;
-    text-align: center;
+    color: #ffffff;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    margin: 20px;
-    border-radius: 10px;
+    padding: 0 24px;
+    margin: 20px;              /* espace autour (clé du rendu image) */
+    border-radius: 12px;       /* coins arrondis */
+    /* Ombre douce comme sur l’image */
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
 }
+
+/* ===== TITRE TOPBAR ===== */
+.topbar h1 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.3px;
+}
+
+
 
 /* ===== MAIN ZONE ===== */
 .main {
