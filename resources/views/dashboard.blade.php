@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
-@section('page-title', 'Tarif')
+@section('page-title', 'Tableau de bord')
 
 @section('content')

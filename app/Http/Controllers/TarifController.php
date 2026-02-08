@@ -11,7 +11,7 @@ class TarifController extends Controller
      */
     public function index()
     {
-        //
+        return view('tarif.index');
     }
 
     /**

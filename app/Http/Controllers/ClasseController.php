@@ -11,7 +11,7 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        //
+        return view('classe.index');
     }
 
     /**
@@ -43,7 +43,7 @@ class ClasseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
     /**

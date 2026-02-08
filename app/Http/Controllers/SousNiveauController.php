@@ -11,7 +11,7 @@ class SousNiveauController extends Controller
      */
     public function index()
     {
-        //
+        return view('sous-niveaux.index');
     }
 
     /**
