@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Filiere;
 use Illuminate\Http\Request;
 
 class FiliereController extends Controller
@@ -11,7 +12,8 @@ class FiliereController extends Controller
      */
     public function index()
     {
-        return view('filiere.index');
+        $filieres = Filiere::all();
+        return view('filiere.index', compact('filieres'));
     }
 
     /**
@@ -19,7 +21,7 @@ class FiliereController extends Controller
      */
     public function create()
     {
-        //
+        return view('filiere.create');
     }
 
     /**
@@ -27,7 +29,20 @@ class FiliereController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'code' => 'required|string|max:20|unique:filieres,code_filiere',
+            'nom'  => 'required|string|max:100|unique:filieres,nom_filiere',
+        ]);
+
+        Filiere::create([
+            'code_filiere' => $request->code,
+            'nom_filiere'  => $request->nom,
+        ]);
+
+
+        return redirect()
+            ->route('filieres.index')
+            ->with('success', 'Filière créée avec succès.');
     }
 
     /**

@@ -11,28 +11,28 @@
 </head>
 <body>
 
-    <div class="app">
+<div class="app-container">
 
-        {{-- Sidebar --}}
-        @include('layouts.sidebar')
+    {{-- Sidebar --}}
+    @include('layouts.sidebar')
 
-        {{-- Zone principale --}}
-        <div class="main">
+    {{-- Zone principale --}}
+    <div class="main-wrapper">
 
-            {{-- Header --}}
-            @include('layouts.header')
+        {{-- Topbar --}}
+        @include('layouts.header')
 
-            {{-- Contenu --}}
-            <main class="content">
-                @yield('content')
-            </main>
+        {{-- Contenu --}}
+        <main class="main-content">
+            @yield('content')
+        </main>
 
-            {{-- Footer --}}
-            @include('layouts.footer')
-
-        </div>
+        {{-- Footer --}}
+        @include('layouts.footer')
 
     </div>
+
+</div>
 
 </body>
 </html>
