@@ -31,14 +31,13 @@ class FiliereController extends Controller
     {
         $request->validate([
             'code' => 'required|string|max:20|unique:filieres,code_filiere',
-            'nom'  => 'required|string|max:100|unique:filieres,nom_filiere',
+            'nom' => 'required|string|max:100|unique:filieres,nom_filiere',
         ]);
 
         Filiere::create([
             'code_filiere' => $request->code,
-            'nom_filiere'  => $request->nom,
+            'nom_filiere' => $request->nom,
         ]);
-
 
         return redirect()
             ->route('filieres.index')
@@ -58,15 +57,25 @@ class FiliereController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $filiere = Filiere::findOrFail($id);
+        return view('filiere.edit', compact('filiere'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $filiere = Filiere::findOrFail($id);
+
+        $filiere->update([
+            'code_filiere' => $request->code,
+            'nom_filiere' => $request->nom,
+        ]);
+
+        return redirect()
+            ->route('filieres.index')
+            ->with('success', 'Filière modifiée avec succès.');
     }
 
     /**
@@ -74,6 +83,10 @@ class FiliereController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $filiere = Filiere::findOrFail($id);
+        $filiere->delete();
+
+        return redirect()->route('filieres.index')
+            ->with('success', 'Filière supprimée avec succès.');
     }
 }

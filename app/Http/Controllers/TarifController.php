@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tarif;
 
 class TarifController extends Controller
 {
@@ -11,7 +12,8 @@ class TarifController extends Controller
      */
     public function index()
     {
-        return view('tarif.index');
+        $tarifs = Tarif::all();
+        return view('tarif.index', compact('tarifs'));
     }
 
     /**
@@ -19,7 +21,7 @@ class TarifController extends Controller
      */
     public function create()
     {
-        //
+        return view('tarif.create');
     }
 
     /**
@@ -27,7 +29,19 @@ class TarifController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'incription' => 'required|string|max:20|unique:filieres,inscription',
+            'mensualite' => 'required|string|max:100|unique:filieres,mensualite',
+        ]);
+
+        tarifs::create([
+            'incription' => $request->incription,
+            'mensualite' => $request->mensualite,
+        ]);
+
+        return redirect()
+            ->route('tarifs.index')
+            ->with('success', 'Tarif créé avec succès.');
     }
 
     /**
@@ -43,7 +57,8 @@ class TarifController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $tarif = Tarif::findOrFail($id);
+        return view('tarif.edit', compact('tarif'));
     }
 
     /**
@@ -51,7 +66,16 @@ class TarifController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $tarif = Tarif::findOrFail($id);
+
+        $tarif->update([
+            'incription' => $request->inscription,
+            'mensualite' => $request->mensualite,
+        ]);
+
+        return redirect()
+            ->route('tarifs.index')
+            ->with('success', 'Tarif modifié avec succès.');
     }
 
     /**
@@ -59,6 +83,10 @@ class TarifController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tarif = Tarif::findOrFail($id);
+        $tarif->delete();
+
+        return redirect()->route('tarifs.index')
+            ->with('success', 'tarif supprimé avec succès.');
     }
 }

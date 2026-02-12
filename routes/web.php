@@ -12,6 +12,5 @@ Route::get('/dashboard', [DashbordController::class, 'index'])
       ->name('dashboard');
 Route::resource('filieres', FiliereController::class);
 Route::resource('niveaux', NiveauController::class);
-Route::resource('sousNiveaux', SousNiveauController::class);
 Route::resource('classes', ClasseController::class);
 Route::resource('tarifs', TarifController::class);

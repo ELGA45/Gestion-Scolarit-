@@ -4,10 +4,10 @@
 
 @section('content')
 
-<div class="filiere-wrapper">
+<div class="create-wrapper">
 
-    <div class="filiere-card">
-        <h2 class="filiere-title">Créer une filière</h2>
+    <div class="create-card">
+        <h2 class="create-title">Créer une filière</h2>
 
         {{-- Messages d’erreur --}}
         @if ($errors->any())

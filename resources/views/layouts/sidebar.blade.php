@@ -19,11 +19,6 @@
             Niveau
         </a>
 
-        <a href="{{ route('sousNiveaux.index') }}"
-           class="{{ request()->routeIs('sousNiveaux.*') ? 'active' : '' }}">
-            Sous-Niveau
-        </a>
-
         <a href="{{ route('classes.index') }}"
            class="{{ request()->routeIs('classes.*') ? 'active' : '' }}">
             Classe
